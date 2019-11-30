@@ -5,30 +5,36 @@ const bcrypt      = require('bcryptjs')
 const Auth        = require('../middleware/auth');
 
 UserRouter.post('/new', async(req, res)=>{
+  // Validate Email
   if(!req.body.email) {
     return res.status(400)
               .send('Email is required')
   }
+
+  // Validate Password
   if(!req.body.password) {
     return res.status(400)
               .sent('Password is required')
   }
 
+  // Instantiate User
   let user = UserModel({
     name: req.body.name,
     email: req.body.email
   })
 
+  // Encrypt Password
   let salt      = bcrypt.genSaltSync(10)
   let hashed    = bcrypt.hashSync(req.body.password, salt)
   user.password = hashed
 
-	try {
-			user = await user.save()
-			res.send(user)
-	} catch(e) {
-		res.status(400).send("Invalid Data")
-	}
+  // Save User
+  try {
+    user = await user.save()
+    res.send(user)
+  } catch(e) {
+    res.status(400).send("Invalid Data")
+  }
 })
 
 // UserRouter.patch('/updateadminstatus/:id', Auth, async (req, res)=>{
