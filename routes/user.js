@@ -51,10 +51,10 @@ UserRouter.post('/new', async(req, res) => {
 })
 
 // Delete user
-UserRouter.delete('/:id/destroy', async(req, res) => {
+UserRouter.delete('/:id/destroy', Auth, async(req, res) => {
   try {
-    const deletedUser =  await UserModel.findByIdAndDelete(req.params.id)
-    res.send(deletedUser)
+    const deleteUser =  await UserModel.findByIdAndDelete(req.params.id)
+    res.send(deleteUser)
   } catch(e) {
     res.status(400)
        .send("Something went wrong")
