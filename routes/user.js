@@ -10,7 +10,8 @@ UserRouter.get('/', async(req, res) => {
     const users = await UserModel.find()
     res.send(users)
   } catch(e) {
-    res.status(400).send("Something went wrong")
+    res.status(400)
+       .send("Something went wrong")
   }
 })
 
@@ -44,7 +45,8 @@ UserRouter.post('/new', async(req, res) => {
     user = await user.save()
     res.send(user)
   } catch(e) {
-    res.status(400).send("Invalid Data")
+    res.status(400)
+       .send("Something went wrong")
   }
 })
 
@@ -54,21 +56,21 @@ UserRouter.delete('/:id/destroy', async(req, res) => {
     const deletedUser =  await UserModel.findByIdAndDelete(req.params.id)
     res.send(deletedUser)
   } catch(e) {
-    res.status(400).send("Something went wrong")
+    res.status(400)
+       .send("Something went wrong")
   }
 })
 
-// UserRouter.patch('/updateadminstatus/:id', Auth, async (req, res)=>{
-	// try {
-		// let condition   = { _id:req.params.id }
-		// let update      = { isAdmin: req.body.isAdmin }
-		// let updatedUser = await UserModel.findOneAndUpdate(condition, update, {new:true})
-		// res.send(updatedUser)
-	// } catch(e) {
-    // res.status(400)
-       // .send('error')
-	// }
-// })
-
+// Update user
+UserRouter.patch('/:id/update', Auth, async (req, res)=>{
+  try {
+    let user        = { _id: req.params.id }
+    let updateUser  = await UserModel.findOneAndUpdate(user, req.body, { new: true })
+    res.send(updateUser)
+  } catch(e) {
+    res.status(400)
+       .send("Something went wrong")
+  }
+})
 
 module.exports = UserRouter
