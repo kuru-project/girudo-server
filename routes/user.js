@@ -4,7 +4,18 @@ const UserModel   = require('../models/User')
 const bcrypt      = require('bcryptjs')
 const Auth        = require('../middleware/auth');
 
-UserRouter.post('/new', async(req, res)=>{
+// Show all users
+UserRouter.get('/', async(req, res) => {
+  try {
+    const users = await UserModel.find()
+    res.send(users)
+  } catch(e) {
+    res.status(400).send("Something went wrong")
+  }
+})
+
+// Create a new user
+UserRouter.post('/new', async(req, res) => {
   // Validate Email
   if(!req.body.email) {
     return res.status(400)
