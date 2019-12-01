@@ -15,6 +15,10 @@ const UserSchema = new Schema({
   role: {
     type: Array,
     default: []
+  },
+  skills: {
+    type: Array,
+    default: []
   }
 })
 
