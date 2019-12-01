@@ -48,6 +48,16 @@ UserRouter.post('/new', async(req, res) => {
   }
 })
 
+// Delete user
+UserRouter.delete('/:id/destroy', async(req, res) => {
+  try {
+    const deletedUser =  await UserModel.findByIdAndDelete(req.params.id)
+    res.send(deletedUser)
+  } catch(e) {
+    res.status(400).send("Something went wrong")
+  }
+})
+
 // UserRouter.patch('/updateadminstatus/:id', Auth, async (req, res)=>{
 	// try {
 		// let condition   = { _id:req.params.id }
