@@ -23,9 +23,9 @@ App.listen(Config.port, () => {
 
 //Router
 const user    = require("./routes/user")
-const book    = require("./routes/book")
+// const book    = require("./routes/book")
 const auth    = require("./routes/auth")
 
 App.use('/user', user)
-App.use('/book', book)
+// App.use('/book', book)
 App.use('/', auth)
