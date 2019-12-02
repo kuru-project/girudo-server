@@ -1,14 +1,15 @@
 const Mongoose  = require('mongoose')
 const Schema    = Mongoose.Schema
+const Moment    = require('moment')
 
 const BookSchema = new Schema({
   status: {
     type: String,
     default: "Pending"
   },
-  timestamp: {
-    type: Number,
-    required: true
+  date: {
+    type: String,
+    default: Moment(new Date).format("MM/DD/YYYY")
   },
   artistId: {
     type: String,
