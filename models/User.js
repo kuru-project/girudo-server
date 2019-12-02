@@ -20,9 +20,12 @@ const UserSchema = new Schema({
     type: Boolean,
     default: false
   },
-  skills: {
-    type: Array,
-    default: []
+  skill: {
+    type: String
+  },
+  contactNumber: {
+    type: Number,
+    default: null
   }
 })
 

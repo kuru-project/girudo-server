@@ -15,6 +15,17 @@ UserRouter.get('/', async(req, res) => {
   }
 })
 
+// Show a particular users
+UserRouter.get('/:id', async(req, res) => {
+  try {
+    const users = await UserModel.find({ id: req.body.id })
+    res.send(users)
+  } catch(e) {
+    res.status(400)
+       .send("Something went wrong")
+  }
+})
+
 // Create a new user
 UserRouter.post('/new', async(req, res) => {
   // Validate Email
