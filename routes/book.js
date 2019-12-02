@@ -22,8 +22,14 @@ BookRouter.post('/new', Auth, async(req, res) => {
               .send('Timestamp is required')
   }
 
-  // Validate User ID
-  if(!req.body.user_id) {
+  // Validate Artist ID
+  if(!req.body.artist_id) {
+    return res.status(400)
+              .send('User ID is required')
+  }
+
+  // Validate Booker ID
+  if(!req.body.booker_id) {
     return res.status(400)
               .send('User ID is required')
   }
@@ -37,7 +43,8 @@ BookRouter.post('/new', Auth, async(req, res) => {
   // Instantiate Book
   let book = BookModel({
     timestamp: req.body.timestamp,
-    user_id: req.body.user_id,
+    artist_id: req.body.artist_id,
+    booker_id: req.body.booker_id,
     location: req.body.location
   })
 
