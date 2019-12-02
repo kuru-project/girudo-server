@@ -12,9 +12,13 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-  roles: {
-    type: Array,
-    default: []
+  isAdmin: {
+    type: Boolean,
+    default: false
+  },
+  isArtist: {
+    type: Boolean,
+    default: false
   },
   skills: {
     type: Array,
