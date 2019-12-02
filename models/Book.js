@@ -9,7 +9,7 @@ const BookSchema = new Schema({
   },
   date: {
     type: String,
-    default: Moment(new Date).format("MM/DD/YYYY")
+    default: Moment(new Date()).format("MM/DD/YYYY")
   },
   artistId: {
     type: String,
