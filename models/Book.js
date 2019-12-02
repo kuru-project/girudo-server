@@ -10,13 +10,17 @@ const BookSchema = new Schema({
     type: Number,
     required: true
   },
-  artist_id: {
+  artistId: {
     type: String,
     required: true
   },
-  booker_id: {
+  bookerId: {
     type: String,
     required: true
+  },
+  contactNumber: {
+    type: Number,
+    default: null
   },
   location: {
     type: String,

@@ -27,10 +27,14 @@ AuthRouter.post('/login', async(req,res)=>{
   let loggedInUser = {
     token: token,
     user: {
-      email: user.email,
       id: user._id,
       name: user.name,
-      isAdmin: user.isAdmin
+      email: user.email,
+      isAdmin: user.isAdmin,
+      isArtist: user.isArtist,
+      skill: user.skill,
+      contactNumber: user.contactNumber,
+      name: user.name
     }
   }
 
