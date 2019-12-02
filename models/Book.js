@@ -1,26 +1,23 @@
-
 const Mongoose  = require('mongoose')
 const Schema    = Mongoose.Schema
 
 const BookSchema = new Schema({
-  // name: String,
-  // email:{
-    // type: String,
-    // required: true,
-    // unique: true
-  // },
-  // password: {
-    // type: String,
-    // required: true
-  // },
-  // role: {
-    // type: Array,
-    // default: []
-  // },
-  // skills: {
-    // type: Array,
-    // default: []
-  // }
+  status: {
+    type: String,
+    default: "Pending"
+  },
+  timestamp: {
+    type: Number,
+    required: true
+  },
+  user_id: {
+    type: String,
+    required: true
+  },
+  location: {
+    type: String,
+    required: true
+  }
 })
 
 module.exports = Mongoose.model('Book', BookSchema)

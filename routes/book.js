@@ -16,7 +16,39 @@ BookRouter.get('/', async(req, res) => {
 
 // Create a new booking
 BookRouter.post('/new', Auth, async(req, res) => {
+  // Validate Timestamp
+  if(!req.body.timestamp) {
+    return res.status(400)
+              .send('Timestamp is required')
+  }
 
+  // Validate User ID
+  if(!req.body.user_id) {
+    return res.status(400)
+              .send('User ID is required')
+  }
+
+  // Validate Location
+  if(!req.body.location) {
+    return res.status(400)
+              .send('Location is required')
+  }
+
+  // Instantiate Book
+  let book = BookModel({
+    timestamp: req.body.timestamp,
+    user_id: req.body.user_id,
+    location: req.body.location
+  })
+
+  // Save Booking
+  try {
+    book = await book.save()
+    res.send(book)
+  } catch(e) {
+    res.status(400)
+       .send("Something went wrong")
+  }
 })
 
 // Delete booking

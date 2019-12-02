@@ -3,7 +3,7 @@ const Schema    = Mongoose.Schema
 
 const UserSchema = new Schema({
   name: String,
-  email:{
+  email: {
     type: String,
     required: true,
     unique: true
@@ -12,7 +12,7 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-  role: {
+  roles: {
     type: Array,
     default: []
   },
