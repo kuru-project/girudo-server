@@ -3,6 +3,12 @@ const App       = Express()
 const Mongoose  = require("mongoose")
 const Config    = require("./config");
 
+App.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*")
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+  next()
+})
+
 App.use(Express.urlencoded({ extended: false }))
 App.use(Express.json())
 
