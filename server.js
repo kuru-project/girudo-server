@@ -22,7 +22,7 @@ Mongoose.connect("mongodb+srv://admin:dgARDcW2LXxpw7BN@cluster0-hshx4.mongodb.ne
 })
 
 // Config PORT
-App.listen(3000, () => {
+App.listen(Config.port, () => {
 	console.log(`Listening on Port localhost:${Config.port}`)
 })
 
