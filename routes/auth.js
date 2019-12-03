@@ -30,11 +30,7 @@ AuthRouter.post('/login', async(req,res)=>{
       id: user._id,
       name: user.name,
       email: user.email,
-      isAdmin: user.isAdmin,
-      isArtist: user.isArtist,
-      skill: user.skill,
-      contactNumber: user.contactNumber,
-      name: user.name
+      isAdmin: user.isAdmin
     }
   }
 
