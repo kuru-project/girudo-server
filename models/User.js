@@ -26,6 +26,10 @@ const UserSchema = new Schema({
   coverPhoto: {
     type: String
   },
+  profilePhoto: {
+    type: String,
+    default: 'https://i.imgur.com/iwh1de9.jpg'
+  },
   contactNumber: {
     type: Number,
     default: null
