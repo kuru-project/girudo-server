@@ -4,6 +4,7 @@ const Mongoose  = require("mongoose")
 const Config    = require("./config")
 const cors      = require("cors")
 const Stripe    = require('stripe')('sk_test_OuulK18SmBVkvBMb5qji5Gl5006cS2W9S1')
+const PORT      = process.env.PORT || Config.port
 
 
 App.use(cors())
@@ -22,8 +23,8 @@ Mongoose.connect("mongodb+srv://admin:dgARDcW2LXxpw7BN@cluster0-hshx4.mongodb.ne
 })
 
 // Config PORT
-App.listen(Config.port, () => {
-	console.log(`Listening on Port localhost:${Config.port}`)
+App.listen(PORT, () => {
+	console.log(`Listening on Port ${PORT}`)
 })
 
 //Router
