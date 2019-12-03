@@ -23,6 +23,9 @@ const UserSchema = new Schema({
   skill: {
     type: String
   },
+  coverPhoto: {
+    type: String
+  },
   contactNumber: {
     type: Number,
     default: null
