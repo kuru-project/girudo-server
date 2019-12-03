@@ -23,6 +23,9 @@ const UserSchema = new Schema({
   skill: {
     type: String
   },
+  description: {
+    type: String
+  },
   coverPhoto: {
     type: String
   },
