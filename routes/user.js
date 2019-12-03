@@ -18,7 +18,7 @@ UserRouter.get('/', async(req, res) => {
 // Show a particular users
 UserRouter.get('/:id', async(req, res) => {
   try {
-    const users = await UserModel.findOne({ id: req.body.id })
+    const users = await UserModel.findOne({ _id: req.body.id })
     res.send(users)
   } catch(e) {
     res.status(400)
