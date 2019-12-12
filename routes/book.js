@@ -6,7 +6,7 @@ const Auth        = require('../middleware/auth');
 // Show all bookings
 BookRouter.get('/', async(req, res) => {
   try {
-    const books = await BookModel.find()
+    const books = await BookModel.find().populate('artist').populate('booker')
     res.send(books)
   } catch(e) {
     res.status(400)
@@ -49,8 +49,8 @@ BookRouter.post('/new', Auth, async(req, res) => {
   // Instantiate Book
   let book = BookModel({
     date: req.body.date,
-    artistId: req.body.artistId,
-    bookerId: req.body.bookerId,
+    artist: req.body.artistId,
+    booker: req.body.bookerId,
     contactNumber: req.body.contactNumber,
     location: req.body.location
   })

@@ -7,13 +7,13 @@ const BookSchema = new Schema({
     type: String,
     default: Moment(new Date()).format("MM/DD/YYYY")
   },
-  artistId: {
-    type: String,
-    required: true
+  artist: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
   },
-  bookerId: {
-    type: String,
-    required: true
+  booker: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
   },
   contactNumber: {
     type: Number,
