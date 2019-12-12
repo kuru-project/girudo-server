@@ -16,22 +16,28 @@ BookRouter.get('/', async(req, res) => {
 
 // Create a new booking
 BookRouter.post('/new', Auth, async(req, res) => {
-  // Validate Timestamp
-  if(!req.body.timestamp) {
+  // Validate Date
+  if(!req.body.date) {
     return res.status(400)
-              .send('Timestamp is required')
+              .send('Date is required')
   }
 
   // Validate Artist ID
-  if(!req.body.artist_id) {
+  if(!req.body.artistId) {
     return res.status(400)
-              .send('User ID is required')
+              .send('Artist ID is required')
   }
 
   // Validate Booker ID
-  if(!req.body.booker_id) {
+  if(!req.body.bookerId) {
     return res.status(400)
-              .send('User ID is required')
+              .send('Booker ID is required')
+  }
+
+  // Validate Contact Number
+  if(!req.body.contactNumber) {
+    return res.status(400)
+              .send('Contact Number is required')
   }
 
   // Validate Location
@@ -40,12 +46,20 @@ BookRouter.post('/new', Auth, async(req, res) => {
               .send('Location is required')
   }
 
+  // Validate Status (Pending, Approved and Cancelled)
+  if(!req.body.status) {
+    return res.status(400)
+              .send('Status is required')
+  }
+
   // Instantiate Book
   let book = BookModel({
-    timestamp: req.body.timestamp,
-    artist_id: req.body.artist_id,
-    booker_id: req.body.booker_id,
-    location: req.body.location
+    date: req.body.date,
+    artistId: req.body.artistId,
+    bookerId: req.body.bookerId,
+    contactNumber: req.body.contactNumber,
+    location: req.body.location,
+    status: req.body.status
   })
 
   // Save Booking

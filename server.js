@@ -53,8 +53,10 @@ App.post('/charge', (req, res) => {
         source: "tok_visa",
         description: "some charge"
       })
+    }).then(() => {
+      res.send("Payment success.")
     })
   } catch(e) {
-
+    res.send("Payment failed.")
   }
 })
