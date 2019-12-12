@@ -3,10 +3,6 @@ const Schema    = Mongoose.Schema
 const Moment    = require('moment')
 
 const BookSchema = new Schema({
-  status: {
-    type: String,
-    default: "Pending"
-  },
   date: {
     type: String,
     default: Moment(new Date()).format("MM/DD/YYYY")

@@ -46,20 +46,13 @@ BookRouter.post('/new', Auth, async(req, res) => {
               .send('Location is required')
   }
 
-  // Validate Status (Pending, Approved and Cancelled)
-  if(!req.body.status) {
-    return res.status(400)
-              .send('Status is required')
-  }
-
   // Instantiate Book
   let book = BookModel({
     date: req.body.date,
     artistId: req.body.artistId,
     bookerId: req.body.bookerId,
     contactNumber: req.body.contactNumber,
-    location: req.body.location,
-    status: req.body.status
+    location: req.body.location
   })
 
   // Save Booking
