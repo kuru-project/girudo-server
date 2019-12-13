@@ -14,6 +14,17 @@ BookRouter.get('/', async(req, res) => {
   }
 })
 
+// Show booking of artist
+BookRouter.get('/:artist_id/list', async(req, res) => {
+  try {
+    const books = await BookModel.find({ artist: req.params.artist_id }).populate('artist').populate('booker')
+    res.send(books)
+  } catch(e) {
+    res.status(400)
+       .send("Something went wrong")
+  }
+})
+
 // Create a new booking
 BookRouter.post('/new', Auth, async(req, res) => {
   // Validate Date
